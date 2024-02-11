@@ -1,0 +1,5 @@
+export GPG_TTY=$(tty)
+
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi

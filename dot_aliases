@@ -1,0 +1,51 @@
+# eza
+
+## If eza is installed, replace ls with eza, else tell the user is is a good idea to install eza
+if command -v eza &> /dev/null
+then
+    alias ls='eza'
+else
+    echo "eza is not installed, it is a good idea to install it for better ls experience"
+fi
+
+# podman
+
+## If we do not find docker, we create an alias for podman
+if ! command -v docker &> /dev/null
+then
+    alias docker='podman'
+fi
+
+# docker
+
+## docker Logs
+alias dl='docker ps --format "{{.Names}}" | fzf | xargs docker logs -f --tail 100'
+
+## docker Restart
+alias dr='docker ps --format "{{.Names}}" | fzf | xargs docker restart'
+
+## docker Stop
+alias ds='docker ps --format "{{.Names}}" | fzf | xargs docker stop'
+
+# docker compose
+alias dc='docker compose'
+
+## docker compose Logs
+alias dcl='docker compose ls | tail -n +2 | fzf | rev | cut -d" " -f1 | rev | sed "s#docker-compose.yml##" | xargs -I {} sh -c "cd {} && docker compose logs -f --tail 100"'
+
+## docker compose Restart
+alias dcr='docker compose ls | tail -n +2 | fzf | rev | cut -d" " -f1 | rev | sed "s#docker-compose.yml##" | xargs -I {} sh -c "cd {} && docker compose restart"'
+
+## docker compose Down
+alias dcd='docker compose ls | tail -n +2 | fzf | rev | cut -d" " -f1 | rev | sed "s#docker-compose.yml##" | xargs -I {} sh -c "cd {} && docker compose down"'
+
+# thefuck
+
+## If thefuck is installed, install command, else tell the user is is a good idea to install thefuck
+
+if command -v thefuck &> /dev/null
+then
+    eval $(thefuck --alias)
+else
+    echo "thefuck is not installed, it is a good idea to install it."
+fi
