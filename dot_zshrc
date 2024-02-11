@@ -21,8 +21,6 @@ setopt PROMPT_SUBST
 PROMPT='%F{yellow}[%*]%f %F{green}%n@%m%f:%F{blue}%~%f %F{red}(${vcs_info_msg_0_})%f
 %# '
 
-
-
 # Load aliases
 if [ -f ~/.aliases ]; then
     . ~/.aliases
