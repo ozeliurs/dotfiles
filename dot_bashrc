@@ -1,0 +1,16 @@
+# Change hisotry settings
+export HISTCONTROL=ignoreboth
+export HISTSIZE=100000
+export HISTFILESIZE=200000
+shopt -s histappend
+
+# Window size
+shopt -s checkwinsize
+
+# Set the prompt
+PROMPT_COMMAND='PS1_CMD1=$(git branch 2>/dev/null | grep '"'"'*'"'"' | colrm 1 2)'; PS1='\[\e[93m\][\t]\[\e[0m\] \[\e[92m\]\u@\h\[\e[0m\]:\[\e[94m\]\w\[\e[0m\] \[\e[91m\](${PS1_CMD1})\n\[\e[0m\]\\$ '
+
+# Load aliases
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi

@@ -8,6 +8,10 @@ else
     echo "eza is not installed, it is a good idea to install it for better ls experience"
 fi
 
+# ls
+
+alias l='ls -la'c
+
 # podman
 
 ## If we do not find docker, we create an alias for podman

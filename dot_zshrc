@@ -1,5 +1,29 @@
 export GPG_TTY=$(tty)
 
+# Replace MacOS shitty history
+alias history='history 0'
+
+# Change hisotry settings
+export HISTCONTROL=ignoredups:ignorespace
+export HISTSIZE=100000
+export HISTFILESIZE=200000
+
+# Prompt
+autoload -Uz vcs_info
+precmd() {
+  vcs_info
+}
+
+zstyle ':vcs_info:git:*' formats '%b'
+zstyle ':vcs_info:git:*' actionformats '%b|%a'
+
+setopt PROMPT_SUBST
+PROMPT='%F{yellow}[%*]%f %F{green}%n@%m%f:%F{blue}%~%f %F{red}(${vcs_info_msg_0_})%f
+%# '
+
+
+
+# Load aliases
 if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
