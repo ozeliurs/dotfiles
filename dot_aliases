@@ -37,6 +37,9 @@ alias dc='docker compose'
 ## docker compose Logs
 alias dcl='docker compose ls | tail -n +2 | fzf | rev | cut -d" " -f1 | rev | sed "s#docker-compose.yml##" | xargs -I {} sh -c "cd {} && docker compose logs -f --tail 100"'
 
+## docker compose Ps
+alias dcp='docker compose ls | tail -n +2 | fzf | rev | cut -d" " -f1 | rev | sed "s#docker-compose.yml##" | xargs -I {} sh -c "cd {} && docker compose ps"'
+
 ## docker compose Restart
 alias dcr='docker compose ls | tail -n +2 | fzf | rev | cut -d" " -f1 | rev | sed "s#docker-compose.yml##" | xargs -I {} sh -c "cd {} && docker compose restart"'
 
