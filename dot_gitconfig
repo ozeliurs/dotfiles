@@ -1,0 +1,10 @@
+[user]
+	name = Ozeliurs
+	email = ozeliurs@gmail.com
+	signingKey = 323EBCD6E581E2D12F8CE75ADC5DE5E56928EB25
+[core]
+	autocrlf = input
+[commit]
+	gpgsign = true
+[pull]
+	rebase = true
