@@ -1,0 +1,13 @@
+README.md
+
+{{- if ne .chezmoi.os "darwin" -}}
+# If not on darwin os, do not import .zshrc
+
+dot_zshrc
+
+{{- else -}}
+# If on darwin os, do not import .bashrc
+
+dot_bashrc
+
+{{- end -}}
