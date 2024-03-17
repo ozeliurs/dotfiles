@@ -70,3 +70,13 @@ then
 else
     echo -e "${warning_color}thefuck is not installed, it is a good idea to install it.${no_color}"
 fi
+
+# transfer.sh
+
+upload() {
+    curl --progress-bar --upload-file "$1" https://transfer.ozeliurs.com/$(basename "$1") | tee /dev/null;
+    echo
+}
+
+alias upload=upload
+alias up=upload
