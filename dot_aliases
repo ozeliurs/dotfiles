@@ -74,20 +74,21 @@ fi
 # transfer.sh
 
 upload() {
-    curl -sD - --progress-bar --upload-file "$1" https://transfer.ozeliurs.com/$(basename "$1") | grep -i -E 'transfer\.sh|x-url-delete' &> /temp/tsh.url
-    
-    if [ -f /temp/tsh.url ]; then
-    echo "**********************************"
-    echo "URL is: $(tail -n1 /temp/tsh.url)"
-    echo "Deletion Token is: $$(grep delete /temp/tsh.url | awk -F "/" '{print $NF}')"
-    echo "**********************************"
+    if [ -f "$1" ]; then
+        curl -sD - --progress-bar --upload-file "$1" https://transfer.ozeliurs.com/$(basename "$1") | grep -i -E 'transfer\.sh|x-url-delete' &> /temp/tsh.url
+        
+        if [ -s /temp/tsh.url ]; then
+            echo "**********************************"
+            echo "URL is: $(tail -n1 /temp/tsh.url)"
+            echo "Deletion Token is: $(grep delete /temp/tsh.url | awk -F "/" '{print $NF}')"
+            echo "**********************************"
+        else
+            echo "NO URL-File found !!"
+        fi
     else
-    echo "NO URL-File found !!"
-    fi
-    else
-    echo "!!!!!!"
-    echo "\"$1\" not found !!"
-    echo "!!!!!!"
+        echo "!!!!!!"
+        echo "\"$1\" not found !!"
+        echo "!!!!!!"
     fi
 }
 
