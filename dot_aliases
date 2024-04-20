@@ -75,12 +75,12 @@ fi
 
 upload() {
     if [ -f "$1" ]; then
-        curl -sD - --progress-bar --upload-file "$1" https://transfer.ozeliurs.com/$(basename "$1") | grep -i -E 'transfer\.sh|x-url-delete' &> /tmp/tsh.url
+        curl -sD - --progress-bar --upload-file "$1" https://transfer.ozeliurs.com/$(basename "$1") &> /tmp/tsh.url
         
         if [ -s /tmp/tsh.url ]; then
             echo "**********************************"
             echo "URL is: $(tail -n1 /tmp/tsh.url)"
-            echo "Deletion Token is: $(grep delete /tmp/tsh.url | awk -F "/" '{print $NF}')"
+            echo "Deletion Token is: $(grep X-Url-Delete /tmp/tsh.url | awk -F "/" '{print $NF}')"
             echo "**********************************"
         else
             echo "NO URL-File found !!"
