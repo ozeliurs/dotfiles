@@ -107,9 +107,9 @@ alias up=upload
 
 ipd() {
     if [ -z "$1" ]; then
-        echo "Error: No IP address provided."
-        echo "Usage: ip <ip address>"
-        return 1
+        ip=$(curl -s http://checkip.amazonaws.com/)
+    else
+        ip=$1
     fi
 
     response=$(curl -s "http://ip-api.com/json/$1?fields=66846719")
