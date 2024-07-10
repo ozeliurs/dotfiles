@@ -150,9 +150,32 @@ gen_crt() {
 }
 
 
+check_and_reload_nginx() {
+    # Check Nginx configuration
+    if sudo nginx -t; then
+        echo "Nginx configuration is valid. Reloading Nginx..."
+        sudo systemctl reload nginx.service
+        echo "Nginx reloaded successfully."
+    else
+        echo "Nginx configuration is invalid. Please fix the errors and try again."
+    fi
+}
+
+
 ngensite() {
     local site="$1"
     sudo ln -s /etc/nginx/sites-available/"$site" /etc/nginx/sites-enabled/;
+
+    # Prompt to reload Nginx
+    read -p "Do you want to reload Nginx? (y/n): " answer
+    case ${answer:0:1} in
+        y|Y )
+            sudo nginx -t && sudo systemctl reload nginx.service
+            ;;
+        * )
+            echo "Nginx reload skipped."
+            ;;
+    esac
 }
 
 # Enable autocomplete for the function
