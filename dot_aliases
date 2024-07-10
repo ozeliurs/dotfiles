@@ -100,7 +100,6 @@ upload() {
     fi
 }
 
-alias upload=upload
 alias up=upload
 
 # Ip Info from http://ip-api.com
@@ -132,4 +131,27 @@ ipd() {
     echo "================================"
 }
 
-alias ipd=ipd
+gen_crt() {
+    local domain="$1"
+    acme.sh --issue --dns dns_cf -d "$domain" -d "*.$domain" --key-file "/home/debian/.acme.sh/pem/$domain-privkey.pem" --fullchain-file "/home/debian/.acme.sh/pem/$domain-fullchain.pem"
+}
+
+
+ngensite() {
+    local site="$1"
+    sudo ln -s /etc/nginx/sites-available/"$site" /etc/nginx/sites-enabled/
+}
+
+# Enable autocomplete for the function
+# Register the autocomplete function for the ngensite command
+if command -v complete &> /dev/null
+then
+    _ngensite_completions() {
+        local cur_word="${COMP_WORDS[COMP_CWORD]}"
+        local available_sites=$(ls /etc/nginx/sites-available)
+
+        COMPREPLY=( $(compgen -W "${available_sites}" -- ${cur_word}) )
+    }
+
+    complete -F _ngensite_completions ngensite
+fi
