@@ -138,6 +138,9 @@ ipd() {
     [ "$(echo $response | jq -r '.proxy')" = "true" ] && echo -n "Proxy ";
     [ "$(echo $response | jq -r '.hosting')" = "true" ] && echo -n "Hosting";
     echo "";
+    echo "" ;
+    echo "Torrents: https://iknowwhatyoudownload.com/en/peer/?ip=$(echo $response | jq -r '.query')";
+    echo "Spam: https://check.spamhaus.org/results?query=$(echo $response | jq -r '.query')";
     echo "================================";
 }
 
