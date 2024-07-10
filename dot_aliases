@@ -170,7 +170,7 @@ ngensite() {
     read -p "Do you want to reload Nginx? (y/n): " answer
     case ${answer:0:1} in
         y|Y )
-            sudo nginx -t && sudo systemctl reload nginx.service
+            check_and_reload_nginx
             ;;
         * )
             echo "Nginx reload skipped."
