@@ -9,7 +9,7 @@ no_color='\033[1;33m'
 ## If jq is not installed, tell the user it is a good idea to install jq
 if ! command -v jq &> /dev/null
 then
-    echo -e "${warning_color}jq is not installed, it is a good idea to install it for better experience${no_color}"
+    echo -e "${warning_color}jq is not installed, it is a good idea to install it for better experience (sudo apt-get install jq)${no_color}"
 fi
 
 # fzf
@@ -17,7 +17,7 @@ fi
 ## If fzf is not installed, tell the user it is a good idea to install fzf
 if ! command -v fzf &> /dev/null
 then
-    echo -e "${warning_color}fzf is not installed, it is a good idea to install it for better experience${no_color}"
+    echo -e "${warning_color}fzf is not installed, it is a good idea to install it for better experience (sudo apt install fzf)${no_color}"
 fi
 
 # eza
@@ -27,12 +27,22 @@ if command -v eza &> /dev/null
 then
     alias ls='eza'
 else
-    echo -e "${warning_color}eza is not installed, it is a good idea to install it for better ls experience${no_color}"
+    echo -e "${warning_color}eza is not installed, it is a good idea to install it for better ls experience (https://github.com/eza-community/eza/blob/main/INSTALL.md#debian-and-ubuntu)${no_color}"
 fi
 
 # ls
 
 alias l='ls -la'
+
+# cat
+
+if ! command -v batcat &> /dev/null
+then
+    alias cat='batcat'
+else
+    echo -e "${warning_color}batcat is not installed, it is a good idea to install it for better cat experience (sudo apt install bat)${no_color}"
+fi
+
 
 # podman
 
