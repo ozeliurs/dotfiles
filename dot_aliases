@@ -146,7 +146,7 @@ ipd() {
 
 gen_crt() {
     local domain="$1"
-    acme.sh --issue --dns dns_cf -d "$domain" -d "*.$domain" --key-file "/home/debian/.acme.sh/pem/$domain-privkey.pem" --fullchain-file "/home/debian/.acme.sh/pem/$domain-fullchain.pem";
+    "$HOME/.acme.sh/acme.sh" --issue --dns dns_cf -d "$domain" -d "*.$domain" --key-file "$HOME/.acme.sh/pem/$domain-privkey.pem" --fullchain-file "$HOME/.acme.sh/pem/$domain-fullchain.pem";
 }
 
 
