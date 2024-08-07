@@ -47,7 +47,7 @@ elif command -v bat &> /dev/null
 then
     alias cat='bat -p'
 else
-    echo -e "${warning_color}batcat or bat is not installed. It is a good idea to install bat for a better cat experience (sudo apt install bat)${no_color}"
+    echo -e "${warning_color}batcat or bat is not installed. It is a good idea to install bat for a better cat experience (sudo apt install bat / brew install bat)${no_color}"
 fi
 
 # podman
