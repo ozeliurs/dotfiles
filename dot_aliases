@@ -38,7 +38,7 @@ alias l='ls -la';
 
 if command -v batcat &> /dev/null
 then
-    alias cat='batcat';
+    alias cat='batcat -p';
 else
     echo -e "${warning_color}batcat is not installed, it is a good idea to install it for better cat experience (sudo apt install bat)${no_color}";
 fi
