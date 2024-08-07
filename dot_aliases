@@ -4,6 +4,10 @@
 warning_color='\033[0;33m'
 no_color='\033[1;33m'
 
+# Check Update
+
+chezmoi git fetch && [ "$(chezmoi git rev-parse @)" != "$(chezmoi git rev-parse @{u})" ] && echo -e "${warning_color}Local repo is behind. Please pull (chezmoi update).${no_color}";
+
 # jq
 
 ## If jq is not installed, tell the user it is a good idea to install jq
