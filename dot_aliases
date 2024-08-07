@@ -38,11 +38,13 @@ alias l='ls -la';
 
 if command -v batcat &> /dev/null
 then
-    alias cat='batcat -p';
+    alias cat='batcat -p'
+elif command -v bat &> /dev/null
+then
+    alias cat='bat -p'
 else
-    echo -e "${warning_color}batcat is not installed, it is a good idea to install it for better cat experience (sudo apt install bat)${no_color}";
+    echo -e "${warning_color}batcat or bat is not installed. It is a good idea to install bat for a better cat experience (sudo apt install bat)${no_color}"
 fi
-
 
 # podman
 
