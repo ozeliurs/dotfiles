@@ -24,6 +24,8 @@ PROMPT='%F{yellow}[%*]%f %F{green}%n@%m%f:%F{blue}%~%f %F{red}(${vcs_info_msg_0_
 export LC_ALL="fr_FR.UTF-8"
 export LANG="fr_FR.UTF-8"
 
+eval "$(zoxide init zsh --cmd cd)"
+
 # Load aliases
 if [ -f ~/.aliases ]; then
     . ~/.aliases
