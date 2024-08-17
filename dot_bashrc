@@ -13,6 +13,9 @@ shopt -s checkwinsize
 # Set the prompt
 PROMPT_COMMAND='PS1_CMD1=$(ip route get 1.1.1.1 | awk -F"src " '"'"'NR == 1{ split($2, a," ");print a[1]}'"'"'); PS1_CMD2=$(git branch 2>/dev/null | grep '"'"'*'"'"' | colrm 1 2)'; PS1='\[\e[93m\][\t]\[\e[0m\] \[\e[92m\]\u@\h\[\e[95m\](${PS1_CMD1})\[\e[0m\]:\[\e[94m\]\w\[\e[0m\] \[\e[91m\](${PS1_CMD2})\n\[\e[0m\]\\$ '
 
+# Add chezmoi to the path
+export PATH=$PATH:~/bin
+
 if command -v zoxide &> /dev/null
 then
     eval "$(zoxide init bash)"
