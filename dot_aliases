@@ -72,6 +72,12 @@ alias ds='docker ps --format "{{.Names}}" | fzf | xargs docker stop';
 # docker compose
 alias dc='docker compose';
 
+## docker compose up force-recreate
+alias dcu='docker compose up -d --remove-orphans --wait'
+
+## docker compose up force-recreate
+alias dcuf='docker compose up -d --remove-orphans --force-recreate --wait'
+
 ## docker compose Logs
 alias dcl='docker compose ls | tail -n +2 | fzf | rev | cut -d" " -f1 | rev | sed "s#docker-compose.yml##" | xargs -I {} sh -c "cd {} && docker compose logs -f --tail 100"';
 
