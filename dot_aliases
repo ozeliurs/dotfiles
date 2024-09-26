@@ -50,14 +50,6 @@ else
     echo -e "${warning_color}batcat or bat is not installed. It is a good idea to install bat for a better cat experience (sudo apt install bat / brew install bat)${no_color}"
 fi
 
-# podman
-
-## If we do not find docker, we create an alias for podman
-if ! command -v docker &> /dev/null
-then
-    alias docker='podman';
-fi
-
 # docker
 
 ## docker Logs
