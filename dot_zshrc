@@ -33,3 +33,6 @@ fi
 if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
+
+# Pipx
+export PATH="$PATH:/Users/ozeliurs/.local/bin"
