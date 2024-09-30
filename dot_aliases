@@ -6,7 +6,7 @@ no_color='\033[1;33m'
 
 # Check Update
 
-chezmoi git fetch > /dev/null 2>&1 && [ "$(chezmoi git rev-parse @)" != "$(chezmoi git rev-parse @{u})" ] && echo -e "${warning_color}Local repo is behind. Please pull (chezmoi update).${no_color}";
+chezmoi git -c http.timeout=1 fetch > /dev/null 2>&1 && [ "$(chezmoi git  -c http.timeout=1 rev-parse @)" != "$(chezmoi git  -c http.timeout=1 rev-parse @{u})" ] && echo -e "${warning_color}Local repo is behind. Please pull (chezmoi update).${no_color}";
 
 # jq
 
@@ -93,29 +93,6 @@ else
     echo -e "${warning_color}thefuck is not installed, it is a good idea to install it.${no_color}";
 fi
 
-# transfer.sh
-
-upload() {
-    if [ -f "$1" ]; then
-        curl -sD - --progress-bar --upload-file "$1" https://transfer.ozeliurs.com/$(basename "$1") &> /tmp/tsh.url;
-        
-        if [ -s /tmp/tsh.url ]; then
-            echo "**********************************";
-            echo "URL is: $(tail -n1 /tmp/tsh.url)";
-            echo "Deletion Token is: $(grep X-Url-Delete /tmp/tsh.url | awk -F "/" '{print $NF}')";
-            echo "**********************************";
-        else
-            echo "NO URL-File found !!";
-        fi
-    else
-        echo "!!!!!!";
-        echo "\"$1\" not found !!";
-        echo "!!!!!!";
-    fi
-}
-
-alias up="upload";
-
 # Ip Info from http://ip-api.com
 
 ipd() {
@@ -147,6 +124,9 @@ ipd() {
     echo "Spam: https://check.spamhaus.org/results?query=$(echo $response | jq -r '.query')";
     echo "================================";
 }
+
+# Run exegol
+alias ex="exegol start default"
 
 gen_crt() {
     local domain="$1"
