@@ -29,6 +29,11 @@ then
     eval "$(zoxide init zsh --cmd cd)"
 fi
 
+if command -v kubectl &> /dev/null
+then
+    source <(kubectl completion zsh)
+fi
+
 # Load aliases
 if [ -f ~/.aliases ]; then
     . ~/.aliases
