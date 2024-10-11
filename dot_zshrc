@@ -15,6 +15,7 @@ precmd() {
 }
 
 autoload -Uz compinit
+compinit
 
 zstyle ':vcs_info:git:*' formats '%b'
 zstyle ':vcs_info:git:*' actionformats '%b|%a'
