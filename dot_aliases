@@ -24,6 +24,12 @@ then
     echo -e "${warning_color}fzf is not installed, it is a good idea to install it for better experience (sudo apt install fzf)${no_color}";
 fi
 
+## If fzf is installed, add fzf on history search
+if command -v fzf &> /dev/null
+then
+    alias h='history | fzf';
+fi
+
 # eza
 
 ## If eza is installed, replace ls with eza, else tell the user is is a good idea to install eza
