@@ -37,6 +37,11 @@ then
     source <(kubectl completion zsh)
 fi
 
+if command -v atuin &> /dev/null
+then
+    eval "$(atuin init zsh)"
+fi
+
 # Load aliases
 if [ -f ~/.aliases ]; then
     . ~/.aliases
