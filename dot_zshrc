@@ -49,3 +49,6 @@ fi
 
 # Pipx
 export PATH="$PATH:/Users/ozeliurs/.local/bin"
+
+# Kubeconfigs
+export KUBECONFIG=$(for CONFIG in $(find ${HOME}/.kube -name 'config-*.yaml') ; do echo -n ":${CONFIG}"; done)
