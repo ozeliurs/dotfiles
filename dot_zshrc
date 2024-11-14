@@ -52,3 +52,8 @@ export PATH="$PATH:/Users/ozeliurs/.local/bin"
 
 # Kubeconfigs
 export KUBECONFIG=$(for CONFIG in $(find ${HOME}/.kube -name 'config-*.yaml') ; do echo -n ":${CONFIG}"; done)
+
+# Quick open github
+function gh() {
+    open $(git remote get-url origin | sed 's/git@github.com:/https:\/\/github.com\//')
+}
