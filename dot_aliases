@@ -20,6 +20,9 @@ alias gpush='git push';
 # Git status
 alias gs='git status';
 
+# Git add + commit with ai
+alias gac='git add . && oco -y';
+
 # Git add + commit with ai + pull + push
 alias gap='git add . && oco -y && git pull && git push';
 
