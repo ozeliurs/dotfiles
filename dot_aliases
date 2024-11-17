@@ -8,6 +8,21 @@ no_color='\033[1;33m'
 
 chezmoi git -c http.timeout=1 fetch > /dev/null 2>&1 && [ "$(chezmoi git  -c http.timeout=1 rev-parse @)" != "$(chezmoi git  -c http.timeout=1 rev-parse @{u})" ] && echo -e "${warning_color}Local repo is behind. Please pull (chezmoi update).${no_color}";
 
+
+# Git
+
+# Git pull
+alias gp='git pull';
+
+# Git push
+alias gpush='git push';
+
+# Git status
+alias gs='git status';
+
+# Git add + commit with ai + pull + push
+alias gap='git add . && oco -y && git pull && git push';
+
 # jq
 
 ## If jq is not installed, tell the user it is a good idea to install jq
