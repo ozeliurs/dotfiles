@@ -104,6 +104,9 @@ alias dcr='docker compose ls | tail -n +2 | fzf | rev | cut -d" " -f1 | rev | se
 ## docker compose Down
 alias dcd='docker compose ls | tail -n +2 | fzf | rev | cut -d" " -f1 | rev | sed "s#docker-compose.yml##" | xargs -I {} sh -c "cd {} && docker compose down"';
 
+## docker compose Watch
+alias dcw='docker compose watch';
+
 # thefuck
 
 ## If thefuck is installed, install command, else tell the user is is a good idea to install thefuck
