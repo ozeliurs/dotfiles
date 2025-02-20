@@ -6,6 +6,9 @@ no_color='\033[1;33m'
 
 # Misc
 alias cd..='cd ..';
+alias cd...='cd ../..';
+alias cd....='cd ../../..';
+alias cd.....='cd ../../../..';
 
 # Git
 
