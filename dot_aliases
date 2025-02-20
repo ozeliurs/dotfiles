@@ -4,6 +4,9 @@
 warning_color='\033[0;33m'
 no_color='\033[1;33m'
 
+# Misc
+alias cd..='cd ..';
+
 # Git
 
 # Git pull
